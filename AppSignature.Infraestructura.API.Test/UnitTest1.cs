@@ -73,7 +73,7 @@ namespace AppSignature.Infraestructura.API.Test
             };
 
             var result = controller.Post(ContractsList);
-            Assert.IsNotNull(result?.Value);
+            Assert.IsNotNull(result.Result);
             
         }
 
@@ -140,7 +140,7 @@ namespace AppSignature.Infraestructura.API.Test
             };
 
             var result = controller.Post(ContractsList);
-            Assert.IsNotNull(result.Value);
+            Assert.IsNotNull(result.Result);
         }
     }
 }
