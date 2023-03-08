@@ -14,7 +14,7 @@ namespace AppSignature.Infraestructura.API.Test
         [Test]
         public void ValidacioinControllerTest()
         {
-            var controller = new ValidacioinController();
+            var controller = new ValidacionController();
 
             var ContractsList = new List<Contract>
             {
@@ -72,8 +72,9 @@ namespace AppSignature.Infraestructura.API.Test
                 }
             };
 
-            var result = controller.Post(null);
-            Assert.IsNotNull(result);
+            var result = controller.Post(ContractsList);
+            Assert.IsNotNull(result?.Value);
+            
         }
 
 
@@ -139,7 +140,7 @@ namespace AppSignature.Infraestructura.API.Test
             };
 
             var result = controller.Post(ContractsList);
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Value);
         }
     }
 }

@@ -20,9 +20,10 @@ namespace AppSignature.Aplicaciones.Common
                 if(sign.name!="#")
                 sign.points = valueSign + rols.FirstOrDefault(x=>x.name==sign.name)!.points;
             }
-            if (contract.signature.Exists(x => x.name == "K"))
+            if (contract.signature.Exists(x => x.name == "K") && contract.signature.Exists(x => x.name == "V"))
             {
-                contract.signature.FirstOrDefault(X => X.name == "V")!.points = 0;
+                    contract.signature.FirstOrDefault(X => X.name == "V")!.points = 0;
+          
             }
         }
 

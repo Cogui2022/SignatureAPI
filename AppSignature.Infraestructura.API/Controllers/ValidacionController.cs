@@ -11,7 +11,7 @@ namespace AppSignature.Infraestructura.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValidacioinController : ControllerBase
+    public class ValidacionController : ControllerBase
     {
         ValidacionServicio CrearServicio()
         {

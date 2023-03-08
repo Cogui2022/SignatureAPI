@@ -40,8 +40,11 @@ namespace AppSignature.Infraestructura.API.Controllers
             var servicion = CrearServicio();
             if (Contrats != null)
             {
-
-                return Ok("La firma necesaria para ganar el juicio es:"+servicion.GenerateWinSignature(Contrats));
+                if (servicion.GenerateWinSignature(Contrats) != null)
+                {
+                    return Ok("La firma necesaria para ganar el juicio es:" + servicion.GenerateWinSignature(Contrats));
+                }
+                return UnprocessableEntity("No ha habido respuesa de firma");
             }
             return UnprocessableEntity("No hay contratos para generar firma");
         }
