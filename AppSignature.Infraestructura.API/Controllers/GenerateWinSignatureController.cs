@@ -27,7 +27,7 @@ namespace AppSignature.Infraestructura.API.Controllers
             var servicion = CrearServicio();
             if (Contrats != null)
             {
-                if (Contrats.Count > 0)
+                if (Contrats.Count > 1)
                 {
                     if (servicion.GenerateWinSignature(Contrats) != null)
                     {

@@ -28,7 +28,7 @@ namespace AppSignature.Infraestructura.API.Controllers
             var servicion = CrearServicio();
             if (validationContrats != null)
             {
-              if(validationContrats.Count > 0)
+              if(validationContrats.Count > 1)
                 {
                     return Ok(servicion.Validar(validationContrats));
                 }
