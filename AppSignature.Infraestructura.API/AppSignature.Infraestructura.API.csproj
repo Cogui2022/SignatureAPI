@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppSiganture.Dominio\AppSignature.Dominio.csproj" />
+    <ProjectReference Include="..\AppSignature.Aplicaciones\AppSignature.Aplicaciones.csproj" />
+    <ProjectReference Include="..\AppSignature.Infraestructura.Datos\AppSignature.Infraestructura.Datos.csproj" />
+  </ItemGroup>
+
+</Project>
