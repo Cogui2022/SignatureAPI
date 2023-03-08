@@ -19,20 +19,7 @@ namespace AppSignature.Infraestructura.API.Controllers
             GenerateWinSignatureServicio servicio = new GenerateWinSignatureServicio(repo);
             return servicio;
         }
-        //// GET: api/<GenerateWinSignatureController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/<GenerateWinSignatureController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
+      
         // POST api/<GenerateWinSignatureController>
         [HttpPost]
         public ActionResult<Contract> Post([FromBody] List<Contract> Contrats)
@@ -40,25 +27,23 @@ namespace AppSignature.Infraestructura.API.Controllers
             var servicion = CrearServicio();
             if (Contrats != null)
             {
-                if (servicion.GenerateWinSignature(Contrats) != null)
+                if (Contrats.Count > 0)
                 {
-                    return Ok("La firma necesaria para ganar el juicio es:" + servicion.GenerateWinSignature(Contrats));
+                    if (servicion.GenerateWinSignature(Contrats) != null)
+                    {
+                        return Ok("La firma necesaria para ganar el juicio es:" + servicion.GenerateWinSignature(Contrats));
+                    }
+                    return UnprocessableEntity("No ha habido respuesa de firma");
                 }
-                return UnprocessableEntity("No ha habido respuesa de firma");
+                else
+                {
+                    return Ok("Se necesitan dos contratos para poder generar una firma valida");
+                }
+                
             }
             return UnprocessableEntity("No hay contratos para generar firma");
         }
 
-        //// PUT api/<GenerateWinSignatureController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<GenerateWinSignatureController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+      
     }
 }

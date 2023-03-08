@@ -20,20 +20,7 @@ namespace AppSignature.Infraestructura.API.Controllers
             ValidacionServicio servicio = new ValidacionServicio(repo);
             return servicio;
         }
-        //// GET: api/<ValidacioinController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/<ValidacioinController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
+       
         // POST api/<ValidacioinController>
         [HttpPost]
         public ActionResult<Contract>? Post([FromBody] List<Contract> validationContrats)
@@ -41,23 +28,19 @@ namespace AppSignature.Infraestructura.API.Controllers
             var servicion = CrearServicio();
             if (validationContrats != null)
             {
-              
-                return Ok(servicion.Validar(validationContrats));
+              if(validationContrats.Count > 0)
+                {
+                    return Ok(servicion.Validar(validationContrats));
+                }
+                else
+                {
+                    return Ok("Se necesitan dos contratos para poder validar");
+                }
+                
             }
             return UnprocessableEntity("No hay contratos para validar");
         }
 
-       
-        //// PUT api/<ValidacioinController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<ValidacioinController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+      
     }
 }
